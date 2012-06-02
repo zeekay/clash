@@ -1,5 +1,5 @@
 #!/usr/bin/env coffee
-hemlock = require 'hemlock'
+hemlock   = require 'hemlock'
 
 module.exports = app = hemlock.createServer()
 
