@@ -1,0 +1,18 @@
+{
+  "author": "zeekay",
+  "name": "clash",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zeekay/clash"
+  },
+  "scripts": {
+    "test": "cake test"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
