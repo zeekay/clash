@@ -1,11 +1,5 @@
-ErrorView       = require 'views/error'
-HomeView        = require 'views/home'
-AboutView       = require 'views/about'
-UserView        = require 'views/user'
-FightsView      = require 'views/fights'
-LeaderboardView = require 'views/leaderboard'
-
-User = require 'models/user'
+views = require './views'
+User = require './models/user'
 
 class Router extends Backbone.Router
   routes:
@@ -17,13 +11,13 @@ class Router extends Backbone.Router
     '*path':       'error404'
 
   error404: (path) ->
-    view = new ErrorView()
+    view = new views.ErrorView()
     view.render "Ooops! I couldn't find what you were looking for!"
     $('#content').html view.el
 
   home: ->
     if not @homeView
-      @homeView = new HomeView()
+      @homeView = new views.HomeView()
       @homeView.render()
     else
       @homeView.delegateEvents()
@@ -31,7 +25,7 @@ class Router extends Backbone.Router
 
   about: ->
     if not @aboutView
-      @aboutView = new AboutView()
+      @aboutView = new views.AboutView()
       @aboutView.render()
     else
       @aboutView.delegateEvents()
@@ -41,6 +35,6 @@ class Router extends Backbone.Router
     user = new User {id: id}
     user.fetch
       sucess: (data) ->
-        $('#content').html new UserView({model: data}).render().el
+        $('#content').html new views.UserView({model: data}).render().el
 
-module.exports = Router
+module.exports = new Router

@@ -1,21 +1,11 @@
-Router = require './router'
+class App
+  collections: require './collections'
+  models: require './models'
+  views: require './views'
+  router: require './router'
 
-module.exports = window.app = new Router()
+  constructor: ->
+    require './dom-ready'
+    Backbone.history.start {pushState: true}
 
-app.models =
-  Clash:  require './models/clash'
-  Commit: require './models/commit'
-  Repo:   require './models/repo'
-  User:   require './models/user'
-
-app.collections =
-  Commits: require './collections/commits'
-  Users:   require './collections/users'
-
-$(document).ready ->
-  Backbone.history.start {pushState: true}
-
-  $('a').click (e) ->
-    href = $(@).attr 'href'
-    app.navigate(href, true)
-    false
+module.exports = app = new App()
