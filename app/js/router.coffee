@@ -1,15 +1,20 @@
-ErrorView   = require 'views/error'
-HomeView    = require 'views/home'
-ContactView = require 'views/contact'
-UserView    = require 'views/user'
-User        = require 'models/user'
+ErrorView       = require 'views/error'
+HomeView        = require 'views/home'
+AboutView       = require 'views/about'
+UserView        = require 'views/user'
+FightsView      = require 'views/fights'
+LeaderboardView = require 'views/leaderboard'
+
+User = require 'models/user'
 
 class Router extends Backbone.Router
   routes:
-    '':          'home'
-    'contact':   'contact'
-    'users/:id': 'userDetail'
-    '*path':     'error404'
+    '':            'home'
+    'about':       'about'
+    'fights':      'fights'
+    'leaderboard': 'leaderboard'
+    'users/:id':   'userDetail'
+    '*path':       'error404'
 
   error404: (path) ->
     view = new ErrorView()
@@ -24,13 +29,13 @@ class Router extends Backbone.Router
       @homeView.delegateEvents()
     $('#content').html(@homeView.el)
 
-  contact: ->
-    if not @contactView
-      @contactView = new ContactView()
-      @contactView.render()
+  about: ->
+    if not @aboutView
+      @aboutView = new AboutView()
+      @aboutView.render()
     else
-      @contactView.delegateEvents()
-    $('#content').html(@contactView.el)
+      @aboutView.delegateEvents()
+    $('#content').html(@aboutView.el)
 
   userDetail: (id) ->
     user = new User {id: id}

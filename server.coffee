@@ -19,10 +19,10 @@ app.configure 'development', ->
 app.set 'view engine', 'jade'
 
 app.get '/', (req, res) ->
-  res.render 'index'
+  res.render 'layout'
 
 app.get '*', (req, res) ->
-  res.render 'index'
+  res.render 'layout'
 
 app.post '/api/commit-webhook/', (req, res) ->
   console.log 'recieving commit info'

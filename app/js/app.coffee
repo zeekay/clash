@@ -1,14 +1,13 @@
 Router = require './router'
 
-module.exports = app = new Router()
+module.exports = window.app = new Router()
+app.models =
+  Clash:  require './models/clash'
+  Commit: require './models/commit'
+  Repo:   require './models/repo'
+  User:   require './models/user'
 
 $(document).ready ->
-  app.models =
-    Commit = require './models/commit'
-    Clash  = require './models/clash'
-    User   = require './models/user'
-    Repo   = require './models/repo'
-  window.app = app
   Backbone.history.start {pushState: true}
 
   $('a').click (e) ->
