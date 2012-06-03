@@ -3,17 +3,40 @@ User = require './models/user'
 
 class Router extends Backbone.Router
   routes:
-    '':            'home'
-    'about':       'about'
-    'fights':      'fights'
-    'leaderboard': 'leaderboard'
-    'users/:id':   'userDetail'
-    '*path':       'error404'
+    '':                'home'
+    'about':           'about'
+    'fights':          'fights'
+    'leaderboard':     'leaderboard'
+    'login':           'login'
+    'register':        'register'
+    'users/:username': 'user'
+    '*path':           'error404'
 
-  error404: (path) ->
-    view = new views.ErrorView()
-    view.render "Ooops! I couldn't find what you were looking for!"
-    $('#content').html view.el
+  about: ->
+    view = new views.AboutView()
+    view.render()
+    @swapContent view.el
+
+  login: ->
+    view = new views.LoginView()
+    view.render()
+    @swapContent view.el
+
+  register: ->
+    console.log 'hi'
+    view = new views.RegisterView()
+    view.render()
+    @swapContent view.el
+
+  fights: ->
+    view = new views.FightsView()
+    view.render()
+    @swapContent view.el
+
+  leaderboard: ->
+    view = new views.LeaderboardView()
+    view.render()
+    @swapContent view.el
 
   home: ->
     if not @homeView
@@ -21,20 +44,22 @@ class Router extends Backbone.Router
       @homeView.render()
     else
       @homeView.delegateEvents()
-    $('#content').html(@homeView.el)
+    @swapContent @homeView.el
 
-  about: ->
-    if not @aboutView
-      @aboutView = new views.AboutView()
-      @aboutView.render()
-    else
-      @aboutView.delegateEvents()
-    $('#content').html(@aboutView.el)
-
-  userDetail: (id) ->
-    user = new User {id: id}
+  user: (username) ->
+    user = new User {username: username}
     user.fetch
-      sucess: (data) ->
-        $('#content').html new views.UserView({model: data}).render().el
+      success: (data) =>
+        view = new views.UserView {model: @model}
+        view.render()
+        @swapContent view.el
+
+  error404: (path) ->
+    view = new views.ErrorView()
+    view.render "Ooops! I couldn't find what you were looking for!"
+    @swapContent view.el
+
+  swapContent: (el) ->
+    $('#content').html el
 
 module.exports = new Router

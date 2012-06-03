@@ -1,0 +1,12 @@
+h1 Login
+p
+  form(method='post', action='/sessions')
+    fieldset
+      input(type='hidden', name='redirect', value='/')
+      .clearfix
+        input(type='text', name='username', id='username', placeholder="Username")
+      .clearfix
+        input(type='password', name='password', id='password', placeholder="Password")
+      button.btn.primary(type='submit') Log in
+      span &nbsp; or &nbsp;
+        a(href='/register') Register

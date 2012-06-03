@@ -6,3 +6,5 @@ module.exports =
   HomeView:        require './home'
   LeaderboardView: require './leaderboard'
   UserView:        require './user'
+  LoginView:       require './login'
+  RegisterView:    require './register'

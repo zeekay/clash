@@ -1,0 +1,12 @@
+h1 Register
+p
+  form.users(method='post', action='/register')
+    fieldset
+      .clearfix
+        input(name='user[email]', value='E-mail')
+      .clearfix
+        input(name='user[password]', value='Password', type='password')
+
+      button.btn.primary(type='submit') Register
+      span &nbsp; or &nbsp;
+        a(href='/login') Log In
