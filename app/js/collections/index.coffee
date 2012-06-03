@@ -1,3 +1,3 @@
 module.exports =
-  commits: require './commits'
-  users: require './users'
+  commits: new (require './commits')
+  users: new (require './users')
