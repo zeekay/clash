@@ -1,9 +1,8 @@
 #user-menu.btn-toolbar
   .btn-group
-    a.btn.btn-primary(href='/user')
+    a#user-btn.button.btn.btn-inverse(href='/user')
       i.icon-user.icon-white
-      | User
-    a.btn.btn-primary.dropdown-toggle(data-toggle='dropdown')
+    button.btn.btn-inverse.dropdown-toggle(data-toggle='dropdown')
       span.caret
     ul.dropdown-menu
       li
@@ -20,7 +19,4 @@
           | Ban
       li.divider
       li
-        a(href='#')
-          i.i
-          | Make admin
-
+        a(href='#') Log out
