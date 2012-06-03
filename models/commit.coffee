@@ -6,7 +6,7 @@ Commit = new mongoose.Schema
     default: Date.now
 
   added: [String]
-  author: String
+  author: [String]
   commiter: [String]
   id:
     index: true

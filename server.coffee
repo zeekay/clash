@@ -31,10 +31,25 @@ app.post '/api/commit-webhook/', (req, res) ->
     data += chunk.toString()
   .addListener 'end', ->
     payload = JSON.parse qs.parse(data).payload
-    repo = payload.repository
-    commit = new Commit payload
-    commit.save ->
-      console.log 'Saved new commit'
+
+    repo = new Repo payload.repository
+    repo.save (err) ->
+      if err
+        console.log err
+      else
+        console.log 'Created new Repo'
+
+    commits = payload.commits
+    for commit in commits
+      for commiter in commit.commiter
+        console.log committer
+
+      commit = new Commit commit
+      commit.save (err) ->
+        if err
+          console.log err
+        else
+          console.log 'Saved new Commit'
 
 if require.main == module
   app.run()
