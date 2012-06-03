@@ -2,11 +2,6 @@
 express  = require 'express'
 hemlock  = require 'hemlock'
 mongoose = require 'mongoose'
-qs       = require 'querystring'
-
-User     = require './models/user'
-Repo     = require './models/repo'
-Commit   = require './models/commit'
 
 module.exports = app = hemlock.createServer()
 

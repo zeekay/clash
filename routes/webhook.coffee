@@ -1,6 +1,7 @@
-User     = require '../models/user'
-Repo     = require '../models/repo'
-Commit   = require '../models/commit'
+qs     = require 'querystring'
+User   = require '../models/user'
+Repo   = require '../models/repo'
+Commit = require '../models/commit'
 
 module.exports = (app) ->
   app.post '/api/commit-webhook/', (req, res) ->
