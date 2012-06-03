@@ -2,7 +2,7 @@
 html(lang='en')
   head
     meta(http-equiv='content-type', content='text/html;charset=UTF-8')
-    title clash
+    title clash - it's like a hacker fight club
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='description', content='')
     meta(name='author', content='')
@@ -16,19 +16,17 @@ html(lang='en')
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.brand(href='/') Clash
-          .nav-collapse
+          a.brand(href='/') clash
+          #navmenu.nav-collapse
             ul.nav
-              li.active
-                a(href='/') Home
               li
                 a(href='/about') About
               li
-                a(href='/contact') Contact
+                a(href='/fights') Fights
+              li
+                a(href='/leaderboard') Leaderboard
+
+          include includes/user-menu
 
     .container#content
 

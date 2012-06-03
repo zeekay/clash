@@ -1,0 +1,26 @@
+#user-menu.btn-toolbar
+  .btn-group
+    a.btn.btn-primary(href='/user')
+      i.icon-user.icon-white
+      | User
+    a.btn.btn-primary.dropdown-toggle(data-toggle='dropdown')
+      span.caret
+    ul.dropdown-menu
+      li
+        a(href='#')
+          i.icon-pencil
+          | Edit
+      li
+        a(href='#')
+          i.icon-trash
+          | Delete
+      li
+        a(href='#')
+          i.icon-ban-circle
+          | Ban
+      li.divider
+      li
+        a(href='#')
+          i.i
+          | Make admin
+
