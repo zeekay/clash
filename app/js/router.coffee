@@ -50,7 +50,7 @@ class Router extends Backbone.Router
     user = new User {username: username}
     user.fetch
       success: (data) =>
-        view = new views.UserView {model: @model}
+        view = new views.UserView {model: data}
         view.render()
         @swapContent view.el
 

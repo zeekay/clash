@@ -1,7 +1,8 @@
 class UserView extends Backbone.View
+  tagName: 'div'
   template: require '../templates/user'
   render: ->
-    $(@el).html @template(@model.toJSON())
+    $(@el).html @template(@model.toJSON()[0])
     # summary = new UserSummaryView {model: @model}
     # $('#details', @el).html summary.render().el
     @
