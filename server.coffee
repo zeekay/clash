@@ -4,6 +4,8 @@ hemlock  = require 'hemlock'
 mongoose = require 'mongoose'
 qs       = require 'querystring'
 
+User     = require './models/user'
+Repo     = require './models/repo'
 Commit   = require './models/commit'
 
 module.exports = app = hemlock.createServer()
@@ -29,7 +31,7 @@ app.post '/api/commit-webhook/', (req, res) ->
     data += chunk.toString()
   .addListener 'end', ->
     payload = JSON.parse qs.parse(data).payload
-    console.log payload
+    repo = payload.repository
     commit = new Commit payload
     commit.save ->
       console.log 'Saved new commit'
