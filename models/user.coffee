@@ -5,9 +5,12 @@ User = new mongoose.Schema
     type: Date
     default: Date.now
 
-  name:
+  username:
     index: true
     type: String
     unique: true
+
+  name: String
+  email: String
 
 module.exports = mongoose.model 'User', User
