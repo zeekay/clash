@@ -9,3 +9,5 @@ class App
     Backbone.history.start {pushState: true}
 
 module.exports = app = new App()
+
+app.sock = require './sock'

@@ -22,4 +22,5 @@ app.get '*', (req, res) ->
   res.render 'layout'
 
 if require.main == module
+  app.sock = require './sock'
   app.run()

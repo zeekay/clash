@@ -15,6 +15,7 @@ module.exports =
     './vendor/bootstrap-2.0.1/tooltip.min.js'
     './vendor/bootstrap-2.0.1/transition.min.js'
     './vendor/bootstrap-2.0.1/typeahead.min.js'
+    './vendor/sockjs-0.3.min.js'
   ]
   dependencies: [
   ]
