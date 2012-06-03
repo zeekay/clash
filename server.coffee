@@ -41,9 +41,7 @@ app.post '/api/commit-webhook/', (req, res) ->
 
     commits = payload.commits
     for commit in commits
-      for commiter in commit.commiter
-        console.log committer
-
+      console.log commit
       commit = new Commit commit
       commit.save (err) ->
         if err
