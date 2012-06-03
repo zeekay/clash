@@ -1,4 +1,4 @@
 clash
 =====
 
-faster faster faster
+Hacker fight night.
