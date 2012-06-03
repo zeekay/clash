@@ -1,22 +1,22 @@
 #user-menu.btn-toolbar
   .btn-group
-    a#user-btn.button.btn.btn-inverse(href='/user')
+    a#user-btn.button.btn.btn-inverse(href='/user/')
       i.icon-user.icon-white
     button.btn.btn-inverse.dropdown-toggle(data-toggle='dropdown')
       span.caret
     ul.dropdown-menu
       li
-        a(href='#')
+        a(href='/user/edit/')
           i.icon-pencil
           | Edit
-      li
-        a(href='#')
-          i.icon-trash
-          | Delete
-      li
-        a(href='#')
-          i.icon-ban-circle
-          | Ban
+      // li
+      //   a(href='/user/delete/')
+      //     i.icon-trash
+      //     | Delete
+      // li
+      //   a(href='#')
+      //     i.icon-ban-circle
+      //     | Ban
       li.divider
       li
         a(href='#') Log out
