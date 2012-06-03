@@ -3,16 +3,20 @@ sock = new SockJS('http://localhost:9999/sock')
 div = $('#stream')
 
 print = (m, p) ->
-  p = (p == undefined) ? '' : JSON.stringify(p)
+  if not p
+    p = ''
+  else
+    p = JSON.stringify p
+
   div.append($("<code>").text(m + ' ' + p))
   div.append($("<br>"))
   div.scrollTop(div.scrollTop()+10000)
 
-sockjs.onopen = () ->
+sock.onopen = () ->
   print('[*] open', sock.protocol)
-sockjs.onmessage = (e) ->
+sock.onmessage = (e) ->
   print('[.] message', e.data)
-sockjs.onclose = () ->
+sock.onclose = () ->
   print('[*] close')
 
 module.exports = sock

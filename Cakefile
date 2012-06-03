@@ -2,6 +2,7 @@ require 'shelljs/global'
 
 task 'run', 'run clash', (options) ->
   app = require './server'
+  sock = require './sock'
   app.run()
 
 task 'test', 'test clash', (options) ->

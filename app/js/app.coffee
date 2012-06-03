@@ -1,7 +1,7 @@
 class App
-  collections: require './collections'
-  models:      require './models'
-  views:       require './views'
+  collections: require './collections/index'
+  models:      require './models/index'
+  views:       require './views/index'
   router:      require './router'
 
   constructor: ->

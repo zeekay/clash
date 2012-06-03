@@ -8,11 +8,6 @@ loginRequired = (req, res, next) ->
     res.redirect('sessions/new?redir=' + req.url)
 
 module.exports = (app) ->
-  app.use express.bodyParser()
-  app.use express.cookieParser()
-  app.use express.session({ secret: "AIdfVCMn@3fdf;qsd;fjz.2j31123#$!FASdhp" })
-  app.use express.methodOverride()
-
   app.post '/register', (req, res) ->
     user = new User(req.body.user)
 

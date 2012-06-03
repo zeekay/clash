@@ -10,6 +10,10 @@ app.configure 'development', ->
   app.use express.errorHandler
     dumpExceptions: true
     showStack: true
+  app.use express.bodyParser()
+  app.use express.cookieParser()
+  app.use express.session({secret: "AIdfVCMn@3fdf;qsd;fjz.2j31123#$!FASdhp"})
+  app.use express.methodOverride()
 
 require('./routes')(app)
 
@@ -22,5 +26,5 @@ app.get '*', (req, res) ->
   res.render 'layout'
 
 if require.main == module
-  app.sock = require './sock'
   app.run()
+  require './sock'
