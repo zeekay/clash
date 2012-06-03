@@ -14,7 +14,8 @@
     "hemlock": "0.0.9",
     "node-github": "0.0.3",
     "jade": "~0.26.1",
-    "express": "~2.5.9"
+    "express": "~2.5.9",
+    "mongoose": "~2.6.5"
   },
   "devDependencies": {
     "mocha": "~1.1.0",
