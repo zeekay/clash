@@ -1,0 +1,44 @@
+!!! 5
+html(lang='en')
+  head
+    meta(http-equiv='content-type', content='text/html;charset=UTF-8')
+    title clash
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='stylesheet', href='/app.css')
+
+    link(rel='shortcut icon', href='img/favicon.ico')
+    link(rel='apple-touch-icon', href='img/apple-touch-icon.png')
+    link(rel='apple-touch-icon', sizes='72x72', href='img/apple-touch-icon-72x72.png')
+    link(rel='apple-touch-icon', sizes='114x114', href='img/apple-touch-icon-114x114.png')
+  body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href='/') Clash
+          .nav-collapse
+            ul.nav
+              li.active
+                a(href='/') Home
+              li
+                a(href='/about') About
+              li
+                a(href='/contact') Contact
+
+    .container#content
+
+    .container
+      hr
+      footer
+        p © Zach Kelling 2012
+
+    script(src='/app.js')
+    script
+      window.app = require('app');
+
+  script(src='//html5shim.googlecode.com/svn/trunk/html5.js')
