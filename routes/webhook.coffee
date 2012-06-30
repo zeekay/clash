@@ -3,11 +3,11 @@ User   = require '../models/user'
 Repo   = require '../models/repo'
 Commit = require '../models/commit'
 
-module.exports = (app) ->
-  app.post '/api/commit-webhook/', (req, res) ->
+module.exports = ->
+  @post '/api/commit-webhook/', ->
     console.log 'recieving commit info'
     data = ''
-    req.addListener 'data', (chunk) ->
+    @request.addListener 'data', (chunk) ->
       data += chunk.toString()
     .addListener 'end', ->
       payload = JSON.parse qs.parse(data).payload

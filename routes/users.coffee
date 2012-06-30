@@ -1,34 +1,34 @@
 User = require '../models/user'
 
-module.exports = (app) ->
+module.exports = ->
 
   # Add user
-  app.post "/api/users", (req, res) ->
+  @post "/api/users", ->
     user = req.body
     user.id = Date.now().toString()
     new User(user).save (err) ->
       if not err
-        res.json user, 201
+        @json user, 201
 
   # List users
-  app.get "/api/users", (req, res) ->
+  @get "/api/users", ->
     User.find {}, (err, users) ->
-      res.json users
+      @json users
 
   # Read user
-  app.get "/api/users/:username", (req, res) ->
-    User.findOne {username: req.params.username}, (err, user) ->
-      res.json user
+  @get "/api/users/:username", (username) ->
+    User.findOne {username: username}, (err, user) ->
+      @json user
 
   # Update user
-  app.put "/api/users/:username", (req, res) ->
-    user = req.body
-    User.update {username: req.params.username}, user, {}, (err, num) ->
-      res.json (if err then 404 else 200)
+  @put "/api/users/:username", (username) ->
+    user = @body
+    User.update {username: username}, user, {}, (err, num) ->
+      @json (if err then 404 else 200)
 
   # Delete user
-  app.del "/api/users/:username", (req, res) ->
-    User.findOne {username: req.params.username}, (err, user) ->
+  @del "/api/users/:username", (username) ->
+    User.findOne {username: username}, (err, user) ->
       if not err
         user.remote()
-      res.json (if err then 404 else 204)
+      @json (if err then 404 else 204)
