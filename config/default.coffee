@@ -3,11 +3,11 @@ module.exports =
   staticPath: './public'
 
   cssBundle:
-    main: './app/css'
+    entry: './client/css/app'
     url: '/app.css'
 
   jsBundle:
-    main: './app/app'
+    entry: './client/js/app'
     url: '/app.js'
     before: [
       './vendor/jquery-1.7.2.min.js'

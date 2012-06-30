@@ -1,4 +1,3 @@
-#!/usr/bin/env coffee
 die  = require('die')
   base: __dirname
 
@@ -24,7 +23,7 @@ app = die.createServer ->
   @get '/', ->
     @render 'layout'
 
-  @get '*', ->
-    @render 'layout'
+  # @get '*', ->
+  #   @render 'layout'
 
 module.exports = app
