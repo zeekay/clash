@@ -3,12 +3,15 @@ app     = require '../server'
 zombie  = require 'zombie'
 browser = new zombie.Browser
 
+app.run()
+
 describe 'clash', ->
   describe 'GET /', ->
     before (done) ->
-      app.listen app.settings.port, ->
-        browser.visit "http://localhost:#{app.settings.port}/", -> done()
+      url = "http://localhost:#{app.address().port}/"
+      console.log url
+      browser.visit url, -> done()
 
     it 'has title', ->
       title = browser.text 'title'
-      assert.equal title, 'clash'
+      assert.equal title, "clash - it's like fight club for hackers"

@@ -1,9 +1,11 @@
 #!/usr/bin/env coffee
+die  = require('die')
+  base: __dirname
+
 express  = require 'express'
-hemlock  = require 'hemlock'
 mongoose = require 'mongoose'
 
-module.exports = app = hemlock ->
+app = die.createServer ->
 
   require('./routes')(@)
 
@@ -19,12 +21,10 @@ module.exports = app = hemlock ->
 
   @set 'view engine', 'jade'
 
-  @get '/', (req, res) ->
-    res.render 'layout'
+  @get '/', ->
+    @render 'layout'
 
-  @get '*', (req, res) ->
-    res.render 'layout'
+  @get '*', ->
+    @render 'layout'
 
-if require.main == module
-  app.run()
-  require './sock'
+module.exports = app
