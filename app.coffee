@@ -1,20 +1,24 @@
 app  = require('die')
   base: __dirname
 
-app.extend ->
-
+app.configure ->
   @addRoutes './routes'
 
-  @configure 'development', ->
+  @use die.bodyParser()
+  @use die.cookieParser()
+  @use die.methodOverride()
+
+  @development ->
     require('mongoose').connect 'mongodb://localhost/clash'
-    @use die.bodyParser()
-    @use die.cookieParser()
-    @use die.session({secret: "AIdfVCMn@3fdf;qsd;fjz.2j31123#$!FASdhp"})
-    @use die.methodOverride()
+    @use die.session({secret: "IdfVCMnmqyrbiem1FSp"})
+
+  @production ->
+    require('mongoose').connect 'mongodb://clash.io/clash'
+    @use die.session({secret: "zvnqEf1jxzzafdsfage"})
 
   @set 'view engine', 'jade'
 
-  @get '*^', ->
+  @get '*', ->
     @render 'layout'
 
 module.exports = app
