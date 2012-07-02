@@ -1,29 +1,20 @@
 die  = require('die')
   base: __dirname
 
-express  = require 'express'
-mongoose = require 'mongoose'
+die.extend ->
 
-app = die.createServer ->
+  @addRoutes './routes'
 
-  require('./routes')(@)
-
-  @configure 'development', =>
-    mongoose.connect 'mongodb://localhost/clash'
-    @use express.errorHandler
-      dumpExceptions: true
-      showStack: true
-    @use express.bodyParser()
-    @use express.cookieParser()
-    @use express.session({secret: "AIdfVCMn@3fdf;qsd;fjz.2j31123#$!FASdhp"})
-    @use express.methodOverride()
+  @configure 'development', ->
+    require('mongoose').connect 'mongodb://localhost/clash'
+    @use die.bodyParser()
+    @use die.cookieParser()
+    @use die.session({secret: "AIdfVCMn@3fdf;qsd;fjz.2j31123#$!FASdhp"})
+    @use die.methodOverride()
 
   @set 'view engine', 'jade'
 
-  @get '/', ->
+  @get '*^', ->
     @render 'layout'
-
-  # @get '*', ->
-  #   @render 'layout'
 
 module.exports = app
