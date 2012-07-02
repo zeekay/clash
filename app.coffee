@@ -1,7 +1,7 @@
-die  = require('die')
+app  = require('die')
   base: __dirname
 
-die.extend ->
+app.extend ->
 
   @addRoutes './routes'
 
