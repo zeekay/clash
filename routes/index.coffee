@@ -1,6 +1,5 @@
-fs = require 'fs'
+{join} = require 'path'
+{readdirSync} = require 'fs'
 
-module.exports = (app) ->
-  for file in fs.readdirSync __dirname
-    if file != 'index.coffee'
-      require('./' + file)(app)
+routes = (join __dirname, f for f in readdirSync __dirname)
+module.exports = (require r for r in routes when r != __filename)

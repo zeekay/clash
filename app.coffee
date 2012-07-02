@@ -1,8 +1,8 @@
-app  = require('die')
+app = require('die')
   base: __dirname
 
-app.configure ->
-  @addRoutes './routes'
+app.extend ->
+  @addRoutes require './routes'
 
   @use die.bodyParser()
   @use die.cookieParser()
