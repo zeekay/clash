@@ -12,6 +12,7 @@ app.extend ->
 
   @development ->
     require('mongoose').connect 'mongodb://localhost/clash'
+    require './sock'
 
   @get '/', ->
     @render 'layout'
