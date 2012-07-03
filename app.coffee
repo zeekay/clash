@@ -1,18 +1,21 @@
 app = require('die')
   base: __dirname
 
-app.extend ->
-  @addRoutes require './routes'
+express = require 'express'
 
-  @use app.bodyParser()
-  @use app.cookieParser()
-  @use app.methodOverride()
-  @use app.session({secret: "IdfVCMnmqyrbiem1FSp"})
+app.extend ->
+
+  @use express.bodyParser()
+  @use express.methodOverride()
+  @use express.cookieParser()
+  @use express.session({secret: "IdfVCMnmqyrbiem1FSp"})
 
   @development ->
     require('mongoose').connect 'mongodb://localhost/clash'
 
-  @get '*', ->
+  @get '/', ->
     @render 'layout'
+
+  @addRoutes require './routes'
 
 module.exports = app

@@ -1,6 +1,6 @@
 class App
-  collections: require './collections/index'
-  models:      require './models/index'
+#   collections: require './collections/index'
+#   models:      require './models/index'
   views:       require './views/index'
   router:      require './router'
 

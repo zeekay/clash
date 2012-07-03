@@ -4,7 +4,7 @@ module.exports = ->
 
   # Add user
   @post "/api/users", ->
-    user = req.body
+    user = @body
     user.id = Date.now().toString()
     new User(user).save (err) ->
       if not err

@@ -4,7 +4,7 @@ module.exports = ->
 
   # Add commit
   @post "/api/commits", ->
-    commit = req.body
+    commit = @body
     commit.id = Date.now().toString()
     new Commit(commit).save (err) ->
       if not err
