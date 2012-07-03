@@ -12,8 +12,6 @@ app.extend ->
   @development ->
     require('mongoose').connect 'mongodb://localhost/clash'
 
-  @set 'view engine', 'jade'
-
   @get '*', ->
     @render 'layout'
 
