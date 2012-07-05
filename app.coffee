@@ -4,19 +4,23 @@ app = require('die')
 express = require 'express'
 
 app.extend ->
-
-  @use express.bodyParser()
-  @use express.methodOverride()
-  @use express.cookieParser()
-  @use express.session({secret: "IdfVCMnmqyrbiem1FSp"})
+  @configure ->
+    # Middleware
+    @use express.bodyParser()
+    @use express.methodOverride()
+    @use express.cookieParser()
+    @use express.session({secret: "IdfVCMnmqyrbiem1FSp"})
 
   @development ->
+    # Connect to MongoDB, start SockJS server
     require('mongoose').connect 'mongodb://localhost/clash'
     require './sock'
 
-  @get '/', ->
-    @render 'layout'
-
+  # Add routes from routes dir
   @addRoutes require './routes'
+
+  # Capture everything else and render template
+  @get '*', ->
+    @render 'layout'
 
 module.exports = app
