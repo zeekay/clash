@@ -17,7 +17,7 @@ app.extend ->
     require './sock'
 
   # Add routes from routes dir
-  @addRoutes require './routes'
+  @apply require './routes'
 
   # Capture everything else and render template
   @get '*', ->
