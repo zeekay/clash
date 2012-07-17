@@ -1,24 +1,25 @@
 class App
   constructor: ->
     @collections =
-      commits: require './collections/commits'
-      users:   require './collections/users'
+      commits:     require './collections/commits'
+      users:       require './collections/users'
     @models =
-      Clash:    require './models/clash'
-      Commit:   require './models/commit'
-      Repo:     require './models/repo'
-      User:     require './models/user'
+      Clash:        require './models/clash'
+      Commit:       require './models/commit'
+      Repo:         require './models/repo'
+      User:         require './models/user'
     @views =
-      Commit:   require './views/commit'
-      Commits:  require './views/commits'
-      Error:    require './views/error'
-      Fights:   require './views/fights'
-      Home:     require './views/home'
-      Leaderboard: require './views/leaderboard'
-      Login:    require './views/login'
-      Register: require './views/register'
-      User:     require './views/user'
-    @sock = require './sock'
+      About:        require './views/about'
+      Commit:       require './views/commit'
+      Commits:      require './views/commits'
+      Error:        require './views/error'
+      Fights:       require './views/fights'
+      Home:         require './views/home'
+      Leaderboard:  require './views/leaderboard'
+      Login:        require './views/login'
+      Register:     require './views/register'
+      User:         require './views/user'
+    @sock =         require './sock'
 
   run: ->
     @router = router = require './router'
@@ -29,8 +30,4 @@ class App
         router.navigate(href, true)
         false
 
-module.exports = app = new App()
-if window?
-  window.app = app
-
-app.run()
+(module.exports = window.app = new App()).run()
