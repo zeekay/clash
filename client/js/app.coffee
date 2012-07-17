@@ -5,7 +5,7 @@ class App
       users:   require './collections/users'
     @models =
       Clash:    require './models/clash'
-      Commit:   require './models/commits'
+      Commit:   require './models/commit'
       Repo:     require './models/repo'
       User:     require './models/user'
     @views =
@@ -18,18 +18,19 @@ class App
       Login:    require './views/login'
       Register: require './views/register'
       User:     require './views/user'
+    @sock = require './sock'
+
+  run: ->
     @router = router = require './router'
-
     Backbone.history.start {pushState: true}
-
-    # Use backbone navigate
     $(document).ready ->
       $('a').click (e) ->
         href = $(@).attr 'href'
         router.navigate(href, true)
         false
 
-app = new App()
-app.sock = require './sock'
+module.exports = app = new App()
+if window?
+  window.app = app
 
-module.exports = app
+app.run()

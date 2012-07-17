@@ -1,5 +1,3 @@
-{join} = require 'path'
-{readdirSync} = require 'fs'
+{requireAll} = require('die').utils
 
-routes = (join __dirname, f for f in readdirSync __dirname)
-module.exports = (require r for r in routes when r != __filename)
+module.exports = requireAll __dirname
