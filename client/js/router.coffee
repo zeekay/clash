@@ -1,4 +1,4 @@
-views = require './views'
+{views} = require './app'
 User = require './models/user'
 
 class Router extends Backbone.Router
@@ -13,34 +13,34 @@ class Router extends Backbone.Router
     '*path':           'error404'
 
   about: ->
-    view = new views.AboutView()
+    view = new views.About()
     view.render()
     @swapContent view.el
 
   login: ->
-    view = new views.LoginView()
+    view = new views.Login()
     view.render()
     @swapContent view.el
 
   register: ->
     console.log 'hi'
-    view = new views.RegisterView()
+    view = new views.Register()
     view.render()
     @swapContent view.el
 
   fights: ->
-    view = new views.FightsView()
+    view = new views.Fights()
     view.render()
     @swapContent view.el
 
   leaderboard: ->
-    view = new views.LeaderboardView()
+    view = new views.Leaderboard()
     view.render()
     @swapContent view.el
 
   home: ->
     if not @homeView
-      @homeView = new views.HomeView()
+      @homeView = new views.Home()
       @homeView.render()
     else
       @homeView.delegateEvents()
@@ -50,12 +50,12 @@ class Router extends Backbone.Router
     user = new User {username: username}
     user.fetch
       success: (data) =>
-        view = new views.UserView {model: data}
+        view = new views.User {model: data}
         view.render()
         @swapContent view.el
 
   error404: (path) ->
-    view = new views.ErrorView()
+    view = new views.Error()
     view.render "Ooops! I couldn't find what you were looking for!"
     @swapContent view.el
 
