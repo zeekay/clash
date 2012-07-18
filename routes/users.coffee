@@ -6,29 +6,35 @@ module.exports = ->
   @post "/api/users", ->
     user = @body
     user.id = Date.now().toString()
-    new User(user).save (err) ->
+    new User(user).save (err) =>
       if not err
         @json user, 201
 
   # List users
   @get "/api/users", ->
-    User.find {}, (err, users) ->
-      @json users
+    name = @params.username
+    if name
+      console.log name
+      User.findOne {username: name}, (err, user) =>
+        @json user
+    else
+      User.find {}, (err, users) =>
+        @json users
 
   # Read user
   @get "/api/users/:username", (username) ->
-    User.findOne {username: username}, (err, user) ->
+    User.findOne {username: username}, (err, user) =>
       @json user
 
   # Update user
   @put "/api/users/:username", (username) ->
     user = @body
-    User.update {username: username}, user, {}, (err, num) ->
+    User.update {username: username}, user, {}, (err, num) =>
       @json (if err then 404 else 200)
 
   # Delete user
   @del "/api/users/:username", (username) ->
-    User.findOne {username: username}, (err, user) ->
+    User.findOne {username: username}, (err, user) =>
       if not err
         user.remote()
       @json (if err then 404 else 204)

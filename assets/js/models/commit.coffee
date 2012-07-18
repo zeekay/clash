@@ -1,4 +1,5 @@
 class Commit extends Backbone.Model
-    urlRoot: '/api/commits'
+  idAttribute: '_id'
+  urlRoot: '/api/commits'
 
 module.exports = Commit

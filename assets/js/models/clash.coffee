@@ -1,4 +1,5 @@
 class Clash extends Backbone.Model
-    urlRoot: '/api/clashes'
+  idAttribute: '_id'
+  urlRoot: '/api/clashes'
 
 module.exports = Clash

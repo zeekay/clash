@@ -8,7 +8,7 @@ class Router extends Backbone.Router
     'leaderboard': 'leaderboard'
     'login':       'login'
     'register':    'register'
-    'users/:id':   'user'
+    'users/:name': 'users'
     '*path':       'error404'
 
   about: ->
@@ -45,9 +45,10 @@ class Router extends Backbone.Router
       @homeView.delegateEvents()
     @swapContent @homeView.el
 
-  user: (id) ->
-    user = new models.User id: id
+  users: (name) ->
+    user = new models.User username: name
     user.fetch
+      data: $.param {username: name}
       success: (data) =>
         view = new views.User {model: data}
         view.render()

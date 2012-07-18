@@ -16,4 +16,4 @@ class Commits extends Backbone.Collection
   fetchError: (collection, response) ->
       throw new Error "Products fetch did get collection from API"
 
-module.exports = Commits
+module.exports = new Commits

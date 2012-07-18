@@ -1,4 +1,5 @@
 class Repo extends Backbone.Model
-    urlRoot: '/api/repos'
+  idAttribute: '_id'
+  urlRoot: '/api/repos'
 
 module.exports = Repo
