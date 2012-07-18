@@ -1,4 +1,4 @@
-sock = new SockJS('http://localhost:9999/sock')
+sock = new SockJS("http://#{window.location.host}/sock")
 
 div = $('#stream')
 

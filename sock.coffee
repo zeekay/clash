@@ -8,9 +8,5 @@ sock.on 'connection', (conn) ->
     conn.write(message)
   conn.on 'close', -> return
 
-server = http.createServer()
-server.addListener 'upgrade', (req, res) ->
-  res.end()
-
-sock.installHandlers server, {prefix: '/sock'}
-server.listen 9999, 'localhost'
+module.exports = ->
+  sock.installHandlers @, {prefix: '/sock'}

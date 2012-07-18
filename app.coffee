@@ -5,7 +5,7 @@ app.initialize ->
   require './models'
 
   @development ->
-    require './sock'
+    @apply require './sock'
 
 app.configure ->
   @use @middleware.bodyParser()
