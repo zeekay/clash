@@ -1,16 +1,15 @@
-{views} = require './app'
-User = require './models/user'
+{models, views} = require './app'
 
 class Router extends Backbone.Router
   routes:
-    '':                'home'
-    'about':           'about'
-    'fights':          'fights'
-    'leaderboard':     'leaderboard'
-    'login':           'login'
-    'register':        'register'
-    'users/:username': 'user'
-    '*path':           'error404'
+    '':            'home'
+    'about':       'about'
+    'fights':      'fights'
+    'leaderboard': 'leaderboard'
+    'login':       'login'
+    'register':    'register'
+    'users/:id':   'user'
+    '*path':       'error404'
 
   about: ->
     view = new views.About()
@@ -46,8 +45,8 @@ class Router extends Backbone.Router
       @homeView.delegateEvents()
     @swapContent @homeView.el
 
-  user: (username) ->
-    user = new User {username: username}
+  user: (id) ->
+    user = new models.User id: id
     user.fetch
       success: (data) =>
         view = new views.User {model: data}
