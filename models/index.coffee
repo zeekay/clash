@@ -4,4 +4,6 @@
 mongoose = require 'mongoose'
 mongoose.connect options.mongoose.url
 
-module.exports = requireAll __dirname
+models = {}
+models[m.modelName] = m for m in requireAll __dirname
+module.exports = models
