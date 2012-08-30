@@ -1,4 +1,3 @@
-express = require 'express'
 User = require '../models/user'
 
 loginRequired = (req, res, next) ->
